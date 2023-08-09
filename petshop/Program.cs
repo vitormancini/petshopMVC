@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using petshop.Context;
+using petshop.Models;
 using petshop.Repositories;
 using petshop.Repositories.Interfaces;
 
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 // Injeção de dependência
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
+// Obtendo o carrinho de compra
+builder.Services.AddScoped(sp => Cart.GetCart(sp));
 
 // Sessão
 builder.Services.AddMemoryCache();
