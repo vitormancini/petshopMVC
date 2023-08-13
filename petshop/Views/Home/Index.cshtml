@@ -1,5 +1,16 @@
-﻿@{
+﻿@model HomeViewModel
+
+@{
     ViewData["Title"] = "Início";
 }
 
 <partial name="_Banner" />
+
+<h2>Produtos em destaque</h2>
+
+<div class="row">
+    @foreach (var product in Model.HighlightedProducts)
+    {
+        <partial name="_ProductCard" for="@product" />
+    }
+</div>

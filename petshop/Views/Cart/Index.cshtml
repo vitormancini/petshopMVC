@@ -1,0 +1,42 @@
+﻿@model CartViewModel
+
+<div class="container">
+    <div class="row">
+        <h4>Seu carrinho:</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Quantidade</th>
+                    <th>Lanche</th>
+                    <th class="text-right">Preço</th>
+                    <th class="text-right">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cart.CartItems)
+                {
+                    <tr>
+                        <td class="text-center">@(item.Quantity)</td>
+                        <td class="text-left">@(item.Product.Name)</td>
+                        <td class="text-right">@(item.Product.Price.ToString("c"))</td>
+                        <td class="text-center">
+                            <a asp-controller="Cart" asp-action="RemoveCartItem" asp-route-productId="@(item.Product.Id)">X</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">@(Model.CartTotal.ToString("c"))</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-right">
+            <div class="btn-group">
+                <a class="btn btn-success">Encerrar pedido</a>
+                <a class="btn btn-primary" asp-controller="Product" asp-action="List">Continuar comprando</a>
+            </div>
+        </div>
+    </div>
+</div>

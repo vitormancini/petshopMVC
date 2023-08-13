@@ -1,0 +1,22 @@
+﻿@model Product
+
+<div class="card" style="width: 18rem;">
+    <img src="~/images/@Model.ImageURL" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+    <p class="card-text">@Model.LongDescription</p>
+    <a 
+        class="btn btn-success" 
+        asp-controller="Cart" 
+        asp-action="AddCartItem" 
+        asp-route-productId="@Model.Id">
+        Adicionar no carrinho
+    </a>
+    <a 
+        class="btn btn-primary" 
+        asp-controller="Product" 
+        asp-action="List" >
+        Continuar comprando
+    </a>
+  </div>
+</div>

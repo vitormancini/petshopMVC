@@ -3,6 +3,13 @@
 <div class="col-sm-4 col-md-4 col-lg-4">
     <img src="~/images/@Model.ImageURL" class="img-fluid" />
     <p>@Model.Price</p>
-    <h4>@Model.Name</h4>
+    <a asp-controller="Product" asp-action="Detail" asp-route-productId="@Model.Id">@Model.Name</a>
     <p>@Model.ShortDescription</p>
+    <a 
+        class="btn btn-primary" 
+        asp-controller="Cart" 
+        asp-action="AddCartItem"
+        asp-route-productId="@Model.Id">
+        Adicionar no carrinho
+    </a>
 </div>

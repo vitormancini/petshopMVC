@@ -35,7 +35,7 @@ namespace petshop.Models
 
         public void AddItemToCart(Product product)
         {
-            // Verifiando se na tabela CartItem já existe um produto com o mesmo Id do produto a ser adicionado
+            // Verifcando se na tabela CartItem já existe um produto com o mesmo Id do produto a ser adicionado
             // E também se já existe um Id de Cart com o mesmo Id de Cart obtido na session
 
             var cartItem = _context.CartItem.SingleOrDefault(s => s.Product.Id == product.Id && s.CartId == CartId);
