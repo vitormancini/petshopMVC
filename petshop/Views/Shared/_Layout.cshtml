@@ -26,7 +26,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contato</a>
                         </li>
-                    </ul>              
+                        <form class="navbar-form" asp-controller="Product" asp-action="Search" method="GET">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Procurando por algum produto?" name="productName" />
+                            </div>
+                        </form>
+                    </ul>   
                     @await Component.InvokeAsync("CartResume")
                 </div>
             </div>

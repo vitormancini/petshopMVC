@@ -1,0 +1,12 @@
+﻿@model Order
+
+<div class="jumbotron">
+    <h2>@ViewBag.CheckoutCompleted</h2>
+</div>
+<div class="card">
+    <div class="card-body">
+        <p>CLiente: <strong>@Model.FullName</strong></p>
+        <p>Data do pedido: <strong>@Model.OrderSent</strong></p>
+        <p>Número do pedido: <strong>@Model.OrderId</strong></p>
+    </div>
+</div>

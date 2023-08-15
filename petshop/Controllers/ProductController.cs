@@ -40,5 +40,35 @@ namespace petshop.Controllers
             var product = _productRepository.GetProductById(productId);
             return View(product);
         }
+        public ViewResult Search(string productName)
+        {
+            IEnumerable<Product> products;  
+            string currentCategory = String.Empty;
+
+            if(String.IsNullOrEmpty(productName)) 
+            {
+                products = _productRepository.AllProducts.OrderBy(p => p.Name);
+                currentCategory = "Todos os produtos";
+            } else
+            {
+                products = _productRepository.AllProducts.Where(p => p.Name.ToLower().Contains(productName.ToLower()));
+
+                if (products.Any()) 
+                {
+                    currentCategory = "Produtos";
+                } else
+                {
+                    currentCategory = "Nenhum produto encontrado";
+                }
+            }
+
+            ProductListViewModel productListViewModel = new ProductListViewModel()
+            {
+                Products = products,
+                Category = currentCategory,
+            };
+
+            return View("~/Views/Product/List.cshtml", productListViewModel);
+        }
     }
 }
